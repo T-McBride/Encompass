@@ -27,7 +27,7 @@ A button click assisgs the name to the txtMenu control
 
 *Tip: use the same line of code on formOpen to set a default tab*
 
-## txtMenu Change
+### txtMenu Change
 
 The txtMenu onChange event runs the following
 
@@ -94,3 +94,22 @@ Next
 
 ~~~
 
+<hr>
+
+## Optional: Dynamic Placement and Conditional Visibility
+
+ - Place panels dynmically via the new Point(x,y) method 
+   - use other panel width/height + position methods to make it dynamic
+ - Restrict panels to users via the CurrentUser.Personas.ToString().Contains method
+ - Toggle visibility by inverting the current visibility property 
+
+e.g. onClick event from gear above.
+
+~~~
+'Show the admin panel only to supers
+if EncompassApplication.CurrentUser.Personas.ToString().Contains("Super Administrator")
+	pnlAdmin.Visible = Not pnlAdmin.Visible
+end if
+'Dynamically place to the right of the menu panel based upon size 
+if pnlAdmin.Visible then pnlAdmin.Position = new Point(pnlForm.Position.X + pnlForm.Size.Width,0)
+~~~
